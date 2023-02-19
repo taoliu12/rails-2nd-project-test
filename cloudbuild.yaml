@@ -19,12 +19,22 @@ steps:
         "/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e RAILS_MASTER_KEY=$$RAILS_KEY -- bundle exec rails db:migrate"
       ]
     secretEnv: ["RAILS_KEY"]
+    
+  - id: "apply seeds"
+    name: "gcr.io/google-appengine/exec-wrapper"
+    entrypoint: "bash"
+    args:
+      [
+        "-c",
+        "/buildstep/execute.sh -i gcr.io/${PROJECT_ID}/${_SERVICE_NAME} -s ${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME} -e RAILS_MASTER_KEY=$$RAILS_KEY -- bundle exec rails db:seed"
+      ]
+    secretEnv: ["RAILS_KEY"]
 
-substitutions:
-  _REGION: us-central1
-  _SERVICE_NAME: rails-cat-album
-  _INSTANCE_NAME: cat-album
-  _SECRET_NAME: rails-master-key
+#substitutions:
+ # _REGION: us-central1
+  #_SERVICE_NAME: rails-cat-album
+  #_INSTANCE_NAME: cat-album
+  #_SECRET_NAME: rails-master-key
 
 availableSecrets:
   secretManager:
