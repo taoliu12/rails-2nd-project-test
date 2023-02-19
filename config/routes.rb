@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'posts#index'
   get 'posts', to:'posts#index'
   get 'posts/new'
   get 'posts/create'
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   
   get "/userInSession", to:"sessions#get_logged_in_user"
 
-  root to: 'posts#index'
 
   resources :posts, except: [:index] do
     resources :votes, only: [:create]

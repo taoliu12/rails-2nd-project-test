@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
@@ -94,6 +95,8 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.11.0)
+    faker (3.1.1)
+      i18n (>= 1.8.11, < 2)
     faraday (1.10.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -117,6 +120,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -208,6 +213,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.1)
     rack (2.2.4)
+    rack-cors (2.0.0)
+      rack (>= 2.0.0)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
     rack-test (2.0.2)
@@ -307,16 +314,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   dotenv-rails (~> 2.7, >= 2.7.6)
+  faker
+  fast_jsonapi
   google-cloud-storage (~> 1.31, >= 1.31.1)
   jbuilder (~> 2.7)
   jsbundling-rails (>= 1.0.1, < 1.2)
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-cors
   rack-mini-profiler (~> 3.0)
   rails (~> 7.0.2, >= 7.0.2.1)
   sass-rails (>= 6)
