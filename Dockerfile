@@ -25,6 +25,7 @@ RUN gem install bundler && \
     bundle config set --local without 'development test' && \
     bundle install
 
+RUN npm install --prefix client && npm start --prefix client
 
 # Copy application code to the container image
 COPY . /app
